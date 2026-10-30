@@ -1,3 +1,7 @@
-//ضع بريدك الشخصي بين علامتي الاقتباس، ثم احفظ الملف.
-// مثال: const AZMAH_EMAIL = "yourname@example.com";
-const AZMAH_EMAIL = "alastntajy@gmail.com";
+// إعدادات AZMAH العامة.
+// ضع بريد التواصل الذي تريد إظهاره للزوار. لا تضع كلمة مرورك هنا.
+const AZMAH_CONFIG = {
+  siteName: "AZMAH",
+  contactEmail: "",
+  tagline: "منصة عربية للمعرفة والأبحاث والمقالات"
+};

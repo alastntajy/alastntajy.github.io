@@ -3,119 +3,118 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="AZMAH منصة عربية للمقالات والأبحاث والعلوم والتقنية والمعرفة.">
-  <meta name="theme-color" content="#14243a">
-  <title>AZMAH | المعرفة تبدأ من هنا</title>
+  <meta name="description" content="AZMAH منصة عربية للمعرفة والأبحاث والمقالات العلمية والتقنية.">
+  <meta name="theme-color" content="#14263f">
+  <title>AZMAH | منصة المعرفة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#" aria-label="الصفحة الرئيسية"><span class="brand-mark">A</span><span>AZMAH</span></a>
-      <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
-      <nav id="mainNav">
-        <a href="#home">الرئيسية</a>
-        <a href="#articles">المقالات</a>
-        <a href="#categories">التصنيفات</a>
-        <a href="#about">من نحن</a>
-        <a href="#contact">اتصل بنا</a>
-      </nav>
-      <a class="nav-cta" href="#articles">استكشف المعرفة</a>
-    </div>
+    <a class="brand" href="index.html" aria-label="AZMAH الصفحة الرئيسية">
+      <span class="brand-mark">A</span>
+      <span class="brand-name">AZMAH</span>
+      <span class="brand-sub">منصة المعرفة</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#home">الرئيسية</a>
+      <a href="#articles">المقالات</a>
+      <a href="#categories">التخصصات</a>
+      <a href="#about">عن AZMAH</a>
+      <a href="#contact">اتصل بنا</a>
+    </nav>
+    <a class="admin-link" href="admin.html">لوحة الإدارة <span>↗</span></a>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow"><span class="dot"></span> منصة عربية للمعرفة</span>
-          <h1>المعرفة تبدأ من هنا،<br><em>والأفكار تصنع المستقبل.</em></h1>
-          <p>مساحة عربية تجمع المقالات والأبحاث والشروحات في العلوم والتقنية والإحصاء والتعليم.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#articles">اقرأ أحدث المقالات <span>←</span></a>
-            <a class="button secondary" href="#about">اكتشف AZMAH</a>
-          </div>
-          <div class="hero-note"><span>✦</span> تعلّم، اكتشف، وشارك المعرفة</div>
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> معرفة موثوقة • أفكار تصنع المستقبل</div>
+        <h1>مساحة عربية<br><em>للعلم والمعرفة.</em></h1>
+        <p>نقرأ، نبحث، ونشارك المعرفة. مقالات وأبحاث وشروحات مبسطة في العلوم والإحصاء والتقنية والتعليم.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#articles">استكشف المقالات <span>←</span></a>
+          <a class="button button-ghost" href="#about">اكتشف AZMAH</a>
         </div>
-        <div class="hero-art" aria-label="رسم تجريدي يرمز إلى المعرفة">
-          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
-          <div class="art-card">
-            <div class="art-symbol">A<span>.</span></div>
-            <div class="art-line line-long"></div><div class="art-line"></div><div class="art-line line-short"></div>
-            <div class="art-bottom"><span>IDEAS & KNOWLEDGE</span><b>01 / 04</b></div>
-          </div>
-          <div class="floating-tag tag-top">✧ معرفة</div>
-          <div class="floating-tag tag-bottom">بحث • تعلّم • إلهام</div>
+        <div class="hero-meta"><span>منصة معرفية مستقلة</span><i></i><span>محتوى باللغة العربية</span></div>
+      </div>
+      <div class="hero-art" aria-label="هوية AZMAH البصرية">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="art-card">
+          <div class="art-top"><span>AZMAH JOURNAL</span><span class="art-dot"></span></div>
+          <div class="art-letter">A</div>
+          <div class="art-lines"><b></b><b></b><b></b></div>
+          <div class="art-foot">LEARN · RESEARCH · SHARE</div>
         </div>
+        <div class="floating-note note-one">✦ معرفة</div>
+        <div class="floating-note note-two">⌁ بحث وتحليل</div>
       </div>
     </section>
 
-    <section class="quick-stats">
-      <div class="container stats-grid">
-        <div><strong>01</strong><span>محتوى عربي</span></div>
-        <div><strong>04</strong><span>مجالات معرفية</span></div>
-        <div><strong>∞</strong><span>مساحة للتعلّم</span></div>
-      </div>
+    <section class="stats-strip" aria-label="عن المنصة">
+      <div><strong id="articleCount">03</strong><span>موضوعات تجريبية</span></div>
+      <div><strong>٤</strong><span>مجالات معرفية</span></div>
+      <div><strong>AR</strong><span>محتوى عربي</span></div>
+      <div class="stats-note">المعرفة تبدأ بسؤال جيد.</div>
     </section>
 
     <section class="section" id="articles">
-      <div class="container">
-        <div class="section-heading">
-          <div><span class="eyebrow">من مكتبة AZMAH</span><h2>أحدث المقالات</h2><p>اكتشف موضوعات مختارة توسّع مداركك.</p></div>
-          <a class="text-link" href="#articles">تصفّح المكتبة <span>←</span></a>
+      <div class="section-heading">
+        <div><div class="section-kicker">من مكتبة AZMAH</div><h2>أحدث المقالات</h2><p>موضوعات مختارة للتعلم والاستكشاف.</p></div>
+        <a class="text-link" href="#categories">تصفح التخصصات ←</a>
+      </div>
+      <div class="toolbar">
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث عن مقال أو موضوع..." aria-label="البحث في المقالات"></label>
+        <div class="filter-list" id="categoryFilters">
+          <button class="filter active" data-category="الكل">الكل</button>
+          <button class="filter" data-category="الإحصاء">الإحصاء</button>
+          <button class="filter" data-category="التقنية">التقنية</button>
+          <button class="filter" data-category="العلوم">العلوم</button>
+          <button class="filter" data-category="التعليم">التعليم</button>
         </div>
-        <div class="toolbar">
-          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث عن مقال أو موضوع..." aria-label="ابحث عن مقال"></label>
-          <div class="filters" id="filters">
-            <button class="filter active" data-category="الكل">الكل</button>
-            <button class="filter" data-category="التقنية">التقنية</button>
-            <button class="filter" data-category="الإحصاء">الإحصاء</button>
-            <button class="filter" data-category="العلوم">العلوم</button>
-            <button class="filter" data-category="التعليم">التعليم</button>
-          </div>
-        </div>
-        <div class="article-grid" id="articleGrid" aria-live="polite"></div>
-        <p class="empty-state" id="emptyState" hidden>لم نعثر على مقالات تطابق بحثك. جرّب كلمة أخرى.</p>
+      </div>
+      <div class="article-grid" id="articleGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>لا توجد مقالات مطابقة. جرّب كلمة بحث أخرى.</div>
+    </section>
+
+    <section class="categories-section" id="categories">
+      <div class="section-heading light-heading">
+        <div><div class="section-kicker">مجالاتنا</div><h2>تخصصات تفتح آفاقًا</h2><p>مسارات متنوعة لبناء المعرفة خطوة بخطوة.</p></div>
+      </div>
+      <div class="category-grid">
+        <a class="category-card" href="#articles" data-jump="الإحصاء"><span class="category-icon">∑</span><b>الإحصاء والبيانات</b><small>تحليل البيانات والبرامج الإحصائية</small><span class="category-arrow">↙</span></a>
+        <a class="category-card" href="#articles" data-jump="التقنية"><span class="category-icon">⌘</span><b>التقنية والبرمجة</b><small>البرمجة والأدوات والحوسبة</small><span class="category-arrow">↙</span></a>
+        <a class="category-card" href="#articles" data-jump="العلوم"><span class="category-icon">✳</span><b>العلوم والبحث</b><small>المنهج العلمي ومهارات البحث</small><span class="category-arrow">↙</span></a>
+        <a class="category-card" href="#articles" data-jump="التعليم"><span class="category-icon">▤</span><b>التعليم والتعلم</b><small>مهارات الدراسة والتعلم المستمر</small><span class="category-arrow">↙</span></a>
       </div>
     </section>
 
-    <section class="category-section" id="categories">
-      <div class="container">
-        <div class="section-heading light-heading">
-          <div><span class="eyebrow">تصفّح حسب اهتمامك</span><h2>مجالات المعرفة</h2><p>أبواب متعددة للتعلّم والاكتشاف.</p></div>
-        </div>
-        <div class="category-grid">
-          <button class="category-card" data-pick="التقنية"><span class="category-icon">⌘</span><b>التقنية</b><small>البرمجة والذكاء الاصطناعي والحاسوب</small><span class="category-arrow">↙</span></button>
-          <button class="category-card" data-pick="الإحصاء"><span class="category-icon">▥</span><b>الإحصاء</b><small>التحليل الإحصائي والبيانات والبحث</small><span class="category-arrow">↙</span></button>
-          <button class="category-card" data-pick="العلوم"><span class="category-icon">✳</span><b>العلوم</b><small>العلوم الطبيعية والإنسانية</small><span class="category-arrow">↙</span></button>
-          <button class="category-card" data-pick="التعليم"><span class="category-icon">⌑</span><b>التعليم</b><small>شروحات ومهارات وطرق تعلّم</small><span class="category-arrow">↙</span></button>
-        </div>
-      </div>
+    <section class="about-section" id="about">
+      <div class="about-mark">A.</div>
+      <div><div class="section-kicker">قصتنا</div><h2>المعرفة تصبح أقوى<br>حين نتشاركها.</h2><p>AZMAH مساحة عربية تهدف إلى تقديم محتوى معرفي واضح ومنظم، يجمع بين التبسيط والدقة، ويساعد القارئ على فهم الأفكار وتطبيقها.</p></div>
     </section>
 
-    <section class="about-section section" id="about">
-      <div class="container about-grid">
-        <div class="about-mark">A<span>.</span></div>
-        <div><span class="eyebrow">قصتنا</span><h2>المعرفة حق للجميع.</h2><p>AZMAH مساحة معرفية عربية تهدف إلى تقديم محتوى واضح ومنظّم يساعد القرّاء والطلاب والباحثين على التعلّم والاستكشاف. نؤمن بأن الفكرة الجيدة تستحق أن تُكتب، وأن المعرفة تنمو عندما نتشاركها.</p><a class="text-link" href="#contact">تواصل معنا <span>←</span></a></div>
-      </div>
-    </section>
-
-    <section class="newsletter-section" id="contact">
-      <div class="container newsletter-box">
-        <div><span class="eyebrow">ابقَ على اطلاع</span><h2>هل لديك فكرة أو بحث؟</h2><p>راسل فريق AZMAH واقترح موضوعًا أو شاركنا ملاحظاتك.</p></div>
-        <a class="button light-button" href="#" id="contactEmailLink">راسلنا عبر البريد <span>↗</span></a>
-      </div>
+    <section class="contact-section" id="contact">
+      <div><div class="section-kicker">تواصل معنا</div><h2>لديك سؤال أو فكرة؟</h2><p>يسعدنا استقبال الملاحظات والمقترحات والمساهمات المعرفية.</p></div>
+      <a class="button button-light" id="contactEmailLink" href="#">راسل AZMAH <span>↗</span></a>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-wrap"><a class="brand footer-brand" href="#"><span class="brand-mark">A</span><span>AZMAH</span></a><p>المعرفة تبدأ من هنا.</p><small>© <span id="year"></span> AZMAH. جميع الحقوق محفوظة.</small></div>
+    <a class="footer-brand" href="#home">AZMAH<span>.</span></a>
+    <p>منصة عربية للمعرفة والأبحاث والمقالات.</p>
+    <span>© <span id="year"></span> AZMAH. جميع الحقوق محفوظة.</span>
   </footer>
 
-  <dialog id="articleDialog" class="article-dialog">
+  <dialog class="article-dialog" id="articleDialog">
     <button class="dialog-close" id="dialogClose" aria-label="إغلاق">×</button>
-    <div id="dialogContent"></div>
+    <div class="dialog-cover" id="dialogCover">AZMAH JOURNAL</div>
+    <div class="dialog-content"><div class="article-meta" id="dialogMeta"></div><h2 id="dialogTitle"></h2><p id="dialogExcerpt"></p><div class="dialog-body" id="dialogBody"></div><small class="demo-note">ملاحظة: هذا محتوى تجريبي أولي، ويجب مراجعته وتوثيق مصادره قبل النشر الأكاديمي.</small></div>
   </dialog>
+
   <script src="config.js"></script>
   <script src="script.js"></script>
 </body>
