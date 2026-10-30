@@ -4,6 +4,6 @@ const AZMAH_CONFIG = {
   contactEmail: "",
   tagline: "منصة عربية للمعرفة والأبحاث والمقالات",
 
-  supabaseUrl: "sb_publishable_v1UkaoNHt1AfN550GOLY2w_1U5thXjj",
+  supabaseUrl: "https://vgrsgsqnsbfwmcskcmuy.supabase.co/rest/v1/",
   supabaseKey: "sb_publishable_v1UkaoNHt1AfN550GOLY2w_1U5thXjj"
 };
