@@ -1,70 +1,383 @@
-const articles = [
-  {id:1,category:"التقنية",date:"2026-10-30",title:"ما هو الذكاء الاصطناعي؟ مدخل مبسّط لفهم التقنية",summary:"تعرّف على مفهوم الذكاء الاصطناعي، وكيف تتعلم الأنظمة من البيانات، وأبرز استخداماته في حياتنا.",icon:"⌘",style:"tech",body:["الذكاء الاصطناعي هو مجال من مجالات علوم الحاسوب يهتم ببناء أنظمة تستطيع تنفيذ مهام تتطلب عادةً قدرات بشرية مثل فهم اللغة، والتعرّف على الأنماط، والتنبؤ، وحل المشكلات.","تعتمد كثير من تطبيقات الذكاء الاصطناعي الحديثة على البيانات والخوارزميات. وكلما كانت البيانات مناسبة ومنظمة، أمكن للنظام اكتشاف أنماط تساعده على تقديم نتائج مفيدة.","يُستخدم الذكاء الاصطناعي في التعليم والطب والترجمة وتحليل البيانات، لكنه يحتاج إلى مراجعة بشرية واعية للتأكد من دقة النتائج ومراعاة الخصوصية."]},
-  {id:2,category:"الإحصاء",date:"2026-10-28",title:"الحوسبة الإحصائية: كيف تتحول البيانات إلى معرفة؟",summary:"نظرة على دور البرامج الإحصائية في تنظيم البيانات وتحليلها واستخلاص النتائج.",icon:"▥",style:"stats",body:["الحوسبة الإحصائية هي استخدام الحاسوب والبرمجيات لتنفيذ العمليات الإحصائية وتحليل البيانات بكفاءة ودقة.","تساعد أدوات مثل R وPython والبرامج الإحصائية المتخصصة على تنظيف البيانات، وإجراء الاختبارات، وبناء النماذج، وعرض النتائج في جداول ورسوم بيانية.","لا يغني البرنامج عن التفكير الإحصائي؛ إذ ينبغي اختيار الطريقة المناسبة وفهم افتراضاتها وتفسير النتائج في سياق المشكلة البحثية."]},
-  {id:3,category:"العلوم",date:"2026-10-25",title:"كيف يعمل المنهج العلمي؟",summary:"خطوات منظمة تساعد الباحث على طرح الأسئلة واختبار الفرضيات وبناء المعرفة.",icon:"✳",style:"science",body:["المنهج العلمي طريقة منظمة لدراسة الظواهر والإجابة عن الأسئلة بالاعتماد على الملاحظة والأدلة.","تبدأ العملية غالبًا بسؤال واضح، ثم مراجعة المعرفة السابقة وصياغة فرضية قابلة للاختبار، يلي ذلك تصميم دراسة وجمع البيانات وتحليلها.","تُعرض النتائج مع توضيح حدود الدراسة، وتظل الاستنتاجات قابلة للمراجعة عندما تظهر أدلة جديدة."]},
-  {id:4,category:"التعليم",date:"2026-10-22",title:"مهارات التعلّم الذاتي في العصر الرقمي",summary:"طرق عملية لتنظيم التعلم واختيار المصادر ومتابعة التقدم خطوة بخطوة.",icon:"⌑",style:"learning",body:["التعلّم الذاتي هو أن يتحمل المتعلم دورًا نشطًا في تحديد ما يحتاج إلى تعلمه واختيار المصادر المناسبة وتنظيم وقته.","ابدأ بهدف صغير وواضح، وقسّمه إلى جلسات قصيرة، واستخدم مصدرًا موثوقًا، ثم اختبر فهمك بالتطبيق والشرح بأسلوبك.","دوّن ما تعلمته وما يحتاج إلى مراجعة. الاستمرارية والتقييم المنتظم أهم من محاولة إنجاز كل شيء دفعة واحدة."]},
-  {id:5,category:"التقنية",date:"2026-10-19",title:"لماذا نتعلم البرمجة؟",summary:"البرمجة ليست كتابة أوامر فقط؛ إنها طريقة لتفكيك المشكلات وبناء الحلول.",icon:"</>",style:"tech",body:["تساعد البرمجة على تحويل الأفكار إلى تعليمات يمكن للحاسوب تنفيذها. وهي تجمع بين التفكير المنطقي والإبداع وحل المشكلات.","يمكن البدء بلغة مناسبة للهدف، ثم تعلم المتغيرات والشروط والتكرار والدوال، مع تطبيق كل مفهوم في مشروع صغير.","أفضل طريقة للتقدم هي كتابة البرامج وتجربتها وفهم الأخطاء وتصحيحها، بدل الاكتفاء بقراءة الشروحات."]},
-  {id:6,category:"الإحصاء",date:"2026-10-16",title:"الفرق بين المجتمع والعينة في البحث العلمي",summary:"مفهومان أساسيان لفهم تصميم الدراسات وجمع البيانات والاستدلال الإحصائي.",icon:"▤",style:"stats",body:["المجتمع الإحصائي هو جميع العناصر التي يرغب الباحث في دراستها، أما العينة فهي مجموعة فرعية تُختار من ذلك المجتمع.","تُستخدم العينات عندما يصعب دراسة المجتمع كله بسبب الوقت أو التكلفة أو صعوبة الوصول إلى جميع أفراده.","تعتمد جودة الاستنتاجات على طريقة اختيار العينة وحجمها ومدى تمثيلها للمجتمع، مع توضيح حدود التعميم."]}
+const DEFAULT_ARTICLES = [
+  {
+    title: "الحوسبة الإحصائية: كيف تتحول البيانات إلى معرفة؟",
+    category: "الإحصاء", author: "فريق AZMAH",
+    excerpt: "نظرة على دور البرامج الإحصائية في تنظيم البيانات وتحليلها واستخلاص النتائج.",
+    content: "أصبحت الحوسبة الإحصائية جزءًا أساسيًا من العمل البحثي؛ فهي تجمع بين الأساليب الإحصائية والقدرة الحاسوبية لمعالجة البيانات بكفاءة.\n\nتبدأ العملية بتحديد سؤال واضح، ثم جمع البيانات وتنظيفها واختيار الأسلوب المناسب للتحليل. بعد ذلك تُفسَّر النتائج في ضوء السؤال البحثي وحدود البيانات.\n\nمن المهم ألا تُعامل مخرجات البرامج بوصفها حقائق نهائية؛ فصحة الاستنتاج تعتمد على جودة البيانات وملاءمة المنهج والافتراضات المستخدمة.",
+    published: true
+  },
+  {
+    title: "كيف يعمل المنهج العلمي؟",
+    category: "العلوم", author: "فريق AZMAH",
+    excerpt: "خطوات منظمة تساعد الباحث على طرح الأسئلة واختبار الفرضيات وبناء المعرفة.",
+    content: "المنهج العلمي طريقة منظمة لفهم الظواهر والإجابة عن الأسئلة اعتمادًا على الملاحظة والأدلة.\n\nعادةً يبدأ الباحث بملاحظة أو مشكلة، ثم يصوغ سؤالًا قابلًا للدراسة، ويراجع المعرفة السابقة، ويحدد طريقة جمع الأدلة وتحليلها.\n\nلا يعني المنهج العلمي أن كل دراسة تقدم إجابة نهائية؛ بل إن النتائج قابلة للمراجعة والتطوير كلما ظهرت أدلة جديدة.",
+    published: true
+  },
+  {
+    title: "مدخل إلى البرمجة بلغة R",
+    category: "التقنية", author: "فريق AZMAH",
+    excerpt: "تعرف على لغة R واستخدامها في التحليل الإحصائي والتصور البياني.",
+    content: "لغة R بيئة برمجية مفتوحة المصدر تُستخدم على نطاق واسع في الإحصاء وتحليل البيانات والرسوم البيانية.\n\nيمكن للمبتدئ البدء بالمتغيرات والمتجهات والجداول، ثم الانتقال إلى استيراد البيانات وتنظيفها وتحليلها.\n\nتساعد الممارسة على بيانات صغيرة وواضحة في فهم الأوامر، كما أن توثيق خطوات التحليل يجعل العمل أسهل للمراجعة وإعادة التنفيذ.",
+    published: true
+  }
 ];
 
-const grid = document.getElementById("articleGrid");
-const search = document.getElementById("searchInput");
-const empty = document.getElementById("emptyState");
-let activeCategory = "الكل";
+const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({
+  "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+}[char]));
 
-function renderArticles(){
-  const term = search.value.trim().toLowerCase();
-  const shown = articles.filter(a => (activeCategory==="الكل" || a.category===activeCategory) &&
-    (a.title+" "+a.summary+" "+a.category).toLowerCase().includes(term));
-  grid.innerHTML = shown.map(a => `
-    <article class="article-card" tabindex="0" role="button" data-id="${a.id}" aria-label="قراءة ${a.title}">
-      <div class="article-visual ${a.style}"><span class="visual-icon">${a.icon}</span><span class="visual-label">AZMAH JOURNAL</span></div>
-      <div class="article-body"><div class="article-meta"><span>${a.category}</span><span>•</span><time>${a.date}</time></div>
-      <h3>${a.title}</h3><p>${a.summary}</p><span class="read-more">اقرأ المقال ←</span></div>
-    </article>`).join("");
-  empty.hidden = shown.length !== 0;
-}
-function openArticle(id){
-  const a = articles.find(item => item.id === Number(id));
-  if(!a) return;
-  document.getElementById("dialogContent").innerHTML = `
-    <span class="dialog-category">${a.category}</span><h2>${a.title}</h2>
-    <div class="dialog-date">AZMAH · ${a.date}</div>
-    ${a.body.map(p=>`<p>${p}</p>`).join("")}
-    <div class="dialog-note">ملاحظة تحريرية: هذا نموذج تجريبي للمحتوى. راجع المصادر وأضف المراجع العلمية قبل نشر أي بحث أكاديمي.</div>`;
-  document.getElementById("articleDialog").showModal();
-}
-grid.addEventListener("click",e=>{const card=e.target.closest(".article-card");if(card)openArticle(card.dataset.id)});
-grid.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("article-card")){e.preventDefault();openArticle(e.target.dataset.id)}});
-search.addEventListener("input",renderArticles);
-document.getElementById("filters").addEventListener("click",e=>{
-  const btn=e.target.closest(".filter");if(!btn)return;
-  activeCategory=btn.dataset.category;
-  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===btn));
-  renderArticles();
-});
-document.querySelectorAll(".category-card").forEach(btn=>btn.addEventListener("click",()=>{
-  activeCategory=btn.dataset.pick;
-  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.category===activeCategory));
-  document.getElementById("articles").scrollIntoView({behavior:"smooth"});
-  renderArticles();
-}));
-document.getElementById("dialogClose").addEventListener("click",()=>document.getElementById("articleDialog").close());
-document.getElementById("articleDialog").addEventListener("click",e=>{if(e.target.id==="articleDialog")e.target.close()});
-const menu=document.getElementById("mainNav"),toggle=document.getElementById("menuToggle");
-toggle.addEventListener("click",()=>{const open=menu.classList.toggle("open");toggle.setAttribute("aria-expanded",String(open))});
-menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{menu.classList.remove("open");toggle.setAttribute("aria-expanded","false")}));
-document.getElementById("year").textContent=new Date().getFullYear();
-renderArticles();
+const dateLabel = value => {
+  if (!value) return "";
+  const date = String(value).slice(0, 10);
+  const parts = date.split("-");
+  return parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : date;
+};
 
-// عنوان البريد يضبطه مالك الموقع في config.js
-const contactEmailLink = document.getElementById("contactEmailLink");
-if (contactEmailLink && typeof AZMAH_EMAIL !== "undefined" &&
-    AZMAH_EMAIL && !AZMAH_EMAIL.startsWith("ضع_")) {
-  contactEmailLink.href = "mailto:" + AZMAH_EMAIL + "?subject=" + encodeURIComponent("رسالة إلى AZMAH");
-} else if (contactEmailLink) {
-  contactEmailLink.addEventListener("click", (event) => {
-    event.preventDefault();
-    alert("يرجى وضع بريدك الشخصي في ملف config.js أولاً.");
+const coverSymbols = {"الإحصاء":"∑","التقنية":"⌘","العلوم":"✳","التعليم":"▤"};
+
+function getSupabase() {
+  if (!window.supabase || typeof AZMAH_CONFIG === "undefined" ||
+      !AZMAH_CONFIG.supabaseUrl || !AZMAH_CONFIG.supabaseKey) {
+    return null;
+  }
+  if (!window.azmahSupabase) {
+    window.azmahSupabase = window.supabase.createClient(
+      AZMAH_CONFIG.supabaseUrl,
+      AZMAH_CONFIG.supabaseKey
+    );
+  }
+  return window.azmahSupabase;
+}
+
+function mapArticle(row) {
+  return {
+    id: String(row.id),
+    title: row.title || "",
+    category: row.category || "عام",
+    date: row.created_at ? String(row.created_at).slice(0, 10) : "",
+    author: row.author || "فريق AZMAH",
+    excerpt: row.excerpt || "",
+    body: row.content || "",
+    published: Boolean(row.published)
+  };
+}
+
+async function initPublicSite() {
+  const grid = document.getElementById("articleGrid");
+  if (!grid) return;
+
+  const search = document.getElementById("searchInput");
+  const empty = document.getElementById("emptyState");
+  const count = document.getElementById("articleCount");
+  const dialog = document.getElementById("articleDialog");
+  let articles = [];
+  let activeCategory = "الكل";
+
+  function render() {
+    const term = (search?.value || "").trim().toLowerCase();
+    const visible = articles.filter(article =>
+      (activeCategory === "الكل" || article.category === activeCategory) &&
+      [article.title, article.excerpt, article.category, article.author]
+        .join(" ").toLowerCase().includes(term)
+    );
+
+    grid.innerHTML = visible.map(article => `
+      <article class="article-card">
+        <button class="article-cover cover-${esc(article.category)}" data-open="${esc(article.id)}" aria-label="اقرأ ${esc(article.title)}">
+          <span class="cover-symbol">${coverSymbols[article.category] || "✦"}</span>
+          <span class="cover-label">AZMAH JOURNAL</span>
+        </button>
+        <div class="article-card-content">
+          <div class="article-meta"><span>${esc(article.category)}</span><i></i><time>${esc(dateLabel(article.date))}</time></div>
+          <h3><button class="article-title-button" data-open="${esc(article.id)}">${esc(article.title)}</button></h3>
+          <p>${esc(article.excerpt)}</p>
+          <button class="read-link" data-open="${esc(article.id)}">اقرأ المقال <span>←</span></button>
+        </div>
+      </article>`).join("");
+
+    if (empty) empty.hidden = visible.length !== 0;
+    if (count) count.textContent = String(articles.length).padStart(2, "0");
+  }
+
+  const client = getSupabase();
+  if (!client) {
+    grid.innerHTML = '<p class="empty-state">تعذر الاتصال بقاعدة البيانات. تحقق من إعدادات config.js واتصال الإنترنت.</p>';
+    return;
+  }
+
+  const { data, error } = await client
+    .from("articles")
+    .select("id,title,slug,excerpt,content,category,published,created_at,author")
+    .eq("published", true)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    grid.innerHTML = `<p class="empty-state">تعذر تحميل المقالات: ${esc(error.message)}</p>`;
+    return;
+  }
+  articles = (data || []).map(mapArticle);
+  render();
+
+  document.getElementById("categoryFilters")?.addEventListener("click", event => {
+    const button = event.target.closest("[data-category]");
+    if (!button) return;
+    activeCategory = button.dataset.category;
+    document.querySelectorAll(".filter").forEach(item =>
+      item.classList.toggle("active", item === button)
+    );
+    render();
   });
-                                                                                                                        }
+
+  search?.addEventListener("input", render);
+
+  grid.addEventListener("click", event => {
+    const button = event.target.closest("[data-open]");
+    if (!button) return;
+    const article = articles.find(item => item.id === button.dataset.open);
+    if (!article || !dialog) return;
+    document.getElementById("dialogCover").textContent =
+      `AZMAH JOURNAL  ${coverSymbols[article.category] || "✦"}`;
+    document.getElementById("dialogMeta").textContent =
+      `${article.category}  •  ${dateLabel(article.date)}  •  ${article.author}`;
+    document.getElementById("dialogTitle").textContent = article.title;
+    document.getElementById("dialogExcerpt").textContent = article.excerpt;
+    document.getElementById("dialogBody").innerHTML =
+      String(article.body).split(/\n{2,}/).map(p => `<p>${esc(p)}</p>`).join("");
+    dialog.showModal();
+  });
+
+  document.getElementById("dialogClose")?.addEventListener("click", () => dialog.close());
+  dialog?.addEventListener("click", event => {
+    if (event.target === dialog) dialog.close();
+  });
+
+  document.querySelectorAll("[data-jump]").forEach(link => link.addEventListener("click", () => {
+    activeCategory = link.dataset.jump;
+    document.querySelectorAll(".filter").forEach(item =>
+      item.classList.toggle("active", item.dataset.category === activeCategory)
+    );
+    render();
+  }));
+
+  const menuToggle = document.getElementById("menuToggle");
+  menuToggle?.addEventListener("click", () =>
+    document.getElementById("mainNav")?.classList.toggle("nav-open")
+  );
+  document.querySelectorAll("#mainNav a").forEach(link => link.addEventListener("click", () =>
+    document.getElementById("mainNav")?.classList.remove("nav-open")
+  ));
+
+  const emailLink = document.getElementById("contactEmailLink");
+  if (emailLink && AZMAH_CONFIG.contactEmail) {
+    emailLink.href = `mailto:${AZMAH_CONFIG.contactEmail}`;
+  } else if (emailLink) {
+    emailLink.addEventListener("click", event => {
+      event.preventDefault();
+      alert("لم يُضف بريد التواصل بعد. افتح config.js وضع بريد التواصل الذي تريد نشره.");
+    });
+  }
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+}
+
+async function initAdmin() {
+  const form = document.getElementById("articleForm");
+  if (!form) return;
+
+  const client = getSupabase();
+  const loginPanel = document.getElementById("loginPanel");
+  const adminApp = document.getElementById("adminApp");
+  const loginForm = document.getElementById("loginForm");
+  const loginMessage = document.getElementById("loginMessage");
+  const logoutButton = document.getElementById("logoutButton");
+  const list = document.getElementById("adminArticleList");
+  const idField = document.getElementById("articleId");
+  const titleField = document.getElementById("titleInput");
+  const categoryField = document.getElementById("categoryInput");
+  const authorField = document.getElementById("authorInput");
+  const excerptField = document.getElementById("excerptInput");
+  const bodyField = document.getElementById("bodyInput");
+  const publishedField = document.getElementById("publishedInput");
+  let articles = [];
+
+  function message(text, isError = false) {
+    if (!loginMessage) return;
+    loginMessage.textContent = text;
+    loginMessage.style.color = isError ? "#b42318" : "inherit";
+  }
+
+  function showAdmin(isLoggedIn) {
+    loginPanel.hidden = isLoggedIn;
+    adminApp.hidden = !isLoggedIn;
+  }
+
+  function renderAdmin() {
+    document.getElementById("adminTotal").textContent = articles.length;
+    document.getElementById("adminCategories").textContent =
+      new Set(articles.map(a => a.category)).size;
+    list.innerHTML = articles.map(article => `
+      <div class="admin-article">
+        <div>
+          <b>${esc(article.title)}</b>
+          <small>${esc(article.category)} • ${esc(dateLabel(article.date))} • ${article.published ? "منشور" : "مسودة"}</small>
+        </div>
+        <div class="admin-actions">
+          <button class="edit-button" data-edit="${esc(article.id)}">تعديل</button>
+          <button class="delete-button" data-delete="${esc(article.id)}">حذف</button>
+        </div>
+      </div>`).join("") || '<p class="empty-state">لا توجد مقالات بعد.</p>';
+  }
+
+  function clearForm() {
+    form.reset();
+    idField.value = "";
+    if (publishedField) publishedField.checked = true;
+    document.getElementById("formHeading").textContent = "إضافة مقال جديد";
+    document.getElementById("saveButton").textContent = "حفظ المقال";
+  }
+
+  async function loadArticles() {
+    const { data, error } = await client.from("articles")
+      .select("id,title,slug,excerpt,content,category,published,created_at,author")
+      .order("created_at", { ascending: false });
+    if (error) throw error;
+    articles = (data || []).map(mapArticle);
+    renderAdmin();
+  }
+
+  async function seedIfEmpty() {
+    if (articles.length) return;
+    const rows = DEFAULT_ARTICLES.map((article, index) => ({
+      ...article,
+      slug: `azmah-intro-${index + 1}-${Date.now()}`,
+      updated_at: new Date().toISOString()
+    }));
+    const { error } = await client.from("articles").insert(rows);
+    if (error) throw error;
+    await loadArticles();
+  }
+
+  async function refreshAdmin() {
+    try {
+      await loadArticles();
+      await seedIfEmpty();
+    } catch (error) {
+      message(`تعذر تحميل المقالات: ${error.message}`, true);
+    }
+  }
+
+  if (!client) {
+    showAdmin(false);
+    message("إعدادات Supabase غير مكتملة. تحقق من config.js وتحميل مكتبة Supabase.", true);
+    return;
+  }
+
+  loginForm.addEventListener("submit", async event => {
+    event.preventDefault();
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const submit = loginForm.querySelector('button[type="submit"]');
+    submit.disabled = true;
+    message("جارٍ تسجيل الدخول...");
+    const { error } = await client.auth.signInWithPassword({ email, password });
+    submit.disabled = false;
+    if (error) {
+      message(`تعذر تسجيل الدخول: ${error.message}`, true);
+      return;
+    }
+    message("تم تسجيل الدخول.");
+    showAdmin(true);
+    await refreshAdmin();
+  });
+
+  logoutButton.addEventListener("click", async () => {
+    await client.auth.signOut();
+    showAdmin(false);
+    clearForm();
+    message("تم تسجيل الخروج.");
+  });
+
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+    const saveButton = document.getElementById("saveButton");
+    saveButton.disabled = true;
+    const title = titleField.value.trim();
+    const payload = {
+      title,
+      slug: `${title.toLowerCase().trim().replace(/[^\p{L}\p{N}]+/gu, "-").replace(/^-|-$/g, "").slice(0, 70)}-${Date.now()}`,
+      category: categoryField.value,
+      author: authorField.value.trim() || "فريق AZMAH",
+      excerpt: excerptField.value.trim(),
+      content: bodyField.value.trim(),
+      published: Boolean(publishedField?.checked),
+      updated_at: new Date().toISOString()
+    };
+
+    let result;
+    if (idField.value) {
+      delete payload.slug;
+      result = await client.from("articles").update(payload).eq("id", Number(idField.value));
+    } else {
+      result = await client.from("articles").insert(payload);
+    }
+    saveButton.disabled = false;
+    if (result.error) {
+      alert(`لم يتم حفظ المقال: ${result.error.message}`);
+      return;
+    }
+    clearForm();
+    await refreshAdmin();
+    alert("تم حفظ المقال في قاعدة بيانات AZMAH.");
+  });
+
+  list.addEventListener("click", async event => {
+    const edit = event.target.closest("[data-edit]");
+    const del = event.target.closest("[data-delete]");
+    if (edit) {
+      const article = articles.find(item => item.id === edit.dataset.edit);
+      if (!article) return;
+      idField.value = article.id;
+      titleField.value = article.title;
+      categoryField.value = article.category;
+      authorField.value = article.author;
+      excerptField.value = article.excerpt;
+      bodyField.value = article.body;
+      if (publishedField) publishedField.checked = article.published;
+      document.getElementById("formHeading").textContent = "تعديل المقال";
+      document.getElementById("saveButton").textContent = "حفظ التعديلات";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    if (del && confirm("هل تريد حذف هذا المقال نهائيًا؟")) {
+      const { error } = await client.from("articles").delete().eq("id", Number(del.dataset.delete));
+      if (error) {
+        alert(`تعذر حذف المقال: ${error.message}`);
+        return;
+      }
+      await refreshAdmin();
+    }
+  });
+
+  document.getElementById("resetButton").addEventListener("click", clearForm);
+  document.getElementById("exportButton").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(articles, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = "azmah-articles.json";
+    anchor.click();
+    URL.revokeObjectURL(url);
+  });
+
+  const { data: sessionData } = await client.auth.getSession();
+  if (sessionData.session) {
+    showAdmin(true);
+    await refreshAdmin();
+  } else {
+    showAdmin(false);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initPublicSite();
+  initAdmin();
+});
