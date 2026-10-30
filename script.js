@@ -1,4 +1,4 @@
-const DEFAULT_ARTICLES = [
+9const DEFAULT_ARTICLES = [
   {
     id: "stats-01", title: "الحوسبة الإحصائية: كيف تتحول البيانات إلى معرفة؟",
     category: "الإحصاء", date: "2026-10-28", author: "فريق AZMAH",
@@ -169,4 +169,7 @@ function initAdmin() {
   });
   renderAdmin();
 }
-document.addEventListener("DOMContentLoaded", () => { initPublicSite(); initAdmin(); });
+document.addEventListener("DOMContentLoaded", () => { initPublicSite(); initAdmin(); });document.addEventListener("DOMContentLoaded", () => {
+  initPublicSite();
+  initAdmin();
+});
