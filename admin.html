@@ -9,6 +9,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    [hidden]{display:none!important}
+    .login-panel{max-width:520px;margin:35px auto;padding:26px;background:#fff;border:1px solid #e5e9ef;border-radius:16px}
+    .login-panel h2{margin-top:0}
+    .login-panel label{display:block;margin:14px 0;font-weight:600}
+    .login-panel input{display:block;width:100%;box-sizing:border-box;margin-top:7px;padding:12px;border:1px solid #ccd4df;border-radius:9px;font:inherit}
+    .login-message{min-height:24px;margin-top:12px}
+    .admin-toolbar{display:flex;justify-content:flex-end;margin-bottom:16px}
+    .publish-option{display:flex!important;align-items:center;gap:9px}
+    .publish-option input{width:auto}
+  </style>
 </head>
 <body class="admin-body">
   <header class="admin-header">
@@ -16,29 +27,57 @@
     <a class="button button-ghost" href="index.html">العودة للموقع ↗</a>
   </header>
   <main class="admin-wrap">
-    <div class="admin-title"><div><div class="section-kicker">مساحة المالك</div><h1>لوحة إدارة المحتوى</h1><p>إدارة المقالات التجريبية في هذا المتصفح.</p></div><span class="admin-badge">نسخة أولية</span></div>
-    <div class="notice"><b>تنبيه مهم بشأن الملكية والأمان:</b> هذه لوحة تجريبية تعمل محليًا باستخدام تخزين المتصفح فقط. التغييرات لا تنتقل تلقائيًا إلى أجهزة الزوار، ولا توجد حماية دخول حقيقية. لا تضع فيها معلومات سرية. قبل استخدامها لإدارة موقع عام، نحتاج ربطها بخدمة خلفية آمنة وتسجيل دخول للمالك.</div>
-    <div class="admin-stats"><div><strong id="adminTotal">0</strong><span>إجمالي المقالات</span></div><div><strong id="adminCategories">0</strong><span>التصنيفات</span></div><div><strong>محلي</strong><span>مكان حفظ التعديلات</span></div></div>
-    <section class="editor-panel">
-      <div class="panel-heading"><div><div class="section-kicker">محرر المقالات</div><h2 id="formHeading">إضافة مقال جديد</h2></div><span class="panel-symbol">＋</span></div>
-      <form id="articleForm" class="article-form">
-        <input type="hidden" id="articleId">
-        <label>عنوان المقال<input id="titleInput" required maxlength="110" placeholder="اكتب عنوانًا واضحًا"></label>
-        <div class="form-row">
-          <label>التصنيف<select id="categoryInput"><option>الإحصاء</option><option>التقنية</option><option>العلوم</option><option>التعليم</option></select></label>
-          <label>اسم الكاتب<input id="authorInput" maxlength="60" placeholder="فريق AZMAH"></label>
-        </div>
-        <label>ملخص المقال<textarea id="excerptInput" required rows="3" maxlength="240" placeholder="اكتب ملخصًا قصيرًا للقارئ"></textarea></label>
-        <label>محتوى المقال<textarea id="bodyInput" required rows="8" placeholder="اكتب محتوى المقال هنا. اترك سطرًا فارغًا بين الفقرات."></textarea></label>
-        <div class="form-actions"><button class="button button-primary" type="submit" id="saveButton">حفظ المقال</button><button class="button button-ghost" type="button" id="resetButton">إفراغ الحقول</button></div>
+    <div class="admin-title">
+      <div><div class="section-kicker">مساحة المالك</div><h1>لوحة إدارة المحتوى</h1><p>إدارة المقالات من قاعدة بيانات AZMAH.</p></div>
+      <span class="admin-badge">لوحة الإدارة</span>
+    </div>
+
+    <section id="loginPanel" class="login-panel">
+      <div class="section-kicker">دخول المالك</div>
+      <h2>تسجيل الدخول</h2>
+      <p>استخدم البريد وكلمة المرور المسجلين في Supabase Auth.</p>
+      <form id="loginForm">
+        <label>البريد الإلكتروني<input id="loginEmail" type="email" autocomplete="username" required placeholder="البريد الإلكتروني"></label>
+        <label>كلمة المرور<input id="loginPassword" type="password" autocomplete="current-password" required placeholder="كلمة المرور"></label>
+        <button class="button button-primary" type="submit">دخول لوحة الإدارة</button>
       </form>
+      <p id="loginMessage" class="login-message" role="status"></p>
     </section>
-    <section class="admin-list-section">
-      <div class="panel-heading"><div><div class="section-kicker">المحتوى المنشأ محليًا</div><h2>المقالات الحالية</h2></div><button class="button button-ghost small-button" id="exportButton">تصدير نسخة JSON ↓</button></div>
-      <div id="adminArticleList" class="admin-article-list"></div>
-    </section>
+
+    <div id="adminApp" hidden>
+      <div class="admin-toolbar"><button class="button button-ghost" id="logoutButton" type="button">تسجيل الخروج</button></div>
+      <div class="notice">المقالات المنشورة تظهر للزوار. المقالات غير المنشورة تبقى مسودات داخل لوحة الإدارة.</div>
+      <div class="admin-stats">
+        <div><strong id="adminTotal">0</strong><span>إجمالي المقالات</span></div>
+        <div><strong id="adminCategories">0</strong><span>التصنيفات</span></div>
+        <div><strong>Supabase</strong><span>مكان حفظ المقالات</span></div>
+      </div>
+      <section class="editor-panel">
+        <div class="panel-heading"><div><div class="section-kicker">محرر المقالات</div><h2 id="formHeading">إضافة مقال جديد</h2></div><span class="panel-symbol">＋</span></div>
+        <form id="articleForm" class="article-form">
+          <input type="hidden" id="articleId">
+          <label>عنوان المقال<input id="titleInput" required maxlength="110" placeholder="اكتب عنوانًا واضحًا"></label>
+          <div class="form-row">
+            <label>التصنيف<select id="categoryInput"><option>الإحصاء</option><option>التقنية</option><option>العلوم</option><option>التعليم</option></select></label>
+            <label>اسم الكاتب<input id="authorInput" maxlength="60" placeholder="فريق AZMAH"></label>
+          </div>
+          <label>ملخص المقال<textarea id="excerptInput" required rows="3" maxlength="240" placeholder="اكتب ملخصًا قصيرًا للقارئ"></textarea></label>
+          <label>محتوى المقال<textarea id="bodyInput" required rows="8" placeholder="اكتب محتوى المقال هنا. اترك سطرًا فارغًا بين الفقرات."></textarea></label>
+          <label class="publish-option"><input id="publishedInput" type="checkbox" checked> نشر المقال للزوار</label>
+          <div class="form-actions">
+            <button class="button button-primary" type="submit" id="saveButton">حفظ المقال</button>
+            <button class="button button-ghost" type="button" id="resetButton">إفراغ الحقول</button>
+          </div>
+        </form>
+      </section>
+      <section class="admin-list-section">
+        <div class="panel-heading"><div><div class="section-kicker">قاعدة البيانات</div><h2>المقالات الحالية</h2></div><button class="button button-ghost small-button" id="exportButton" type="button">تصدير نسخة JSON ↓</button></div>
+        <div id="adminArticleList" class="admin-article-list"></div>
+      </section>
+    </div>
   </main>
-  <footer class="site-footer"><a class="footer-brand" href="index.html">AZMAH<span>.</span></a><p>إدارة المحتوى — نسخة تجريبية محلية</p></footer>
+  <footer class="site-footer"><a class="footer-brand" href="index.html">AZMAH<span>.</span></a><p>إدارة المحتوى — AZMAH</p></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="config.js"></script>
   <script src="script.js"></script>
 </body>
